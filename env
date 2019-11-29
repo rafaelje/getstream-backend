@@ -1,0 +1,5 @@
+NODE_ENV=production
+PORT=8080
+
+STREAM_API_KEY=9vjqmsuruwp2
+STREAM_API_SECRET=qcx8un8mptambtbjk7ydc5feb4aqxan6twmm68qkxezdjv4ccywmnu4ykvhsnqh3
