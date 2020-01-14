@@ -27,9 +27,9 @@ exports.token = async (req, res) => {
             apiSecret,
         );
 
-        const userToken = client.createUserToken(data.username);
+        //const userToken = client.createUserToken(data.username);
 
-        res.status(200).json({ userToken });
+        res.status(200).json({ data });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: error.message });
