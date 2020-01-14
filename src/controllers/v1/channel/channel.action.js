@@ -20,18 +20,16 @@ exports.token = async (req, res) => {
             apiSecret = process.env.STREAM_API_SECRET;
         }
 
-        const client = new StreamChat(apiKey, apiSecret);
+        var stream = require('getstream');
+        // Instantiate a new client (server side)
+        client = stream.connect(
+            apiKey,
+            apiSecret,
+        );
 
-        const user = Object.assign({}, data, {
-            id: md5(data.username),
-            role: 'admin',
-            name: data.username,
-            image: `https://robohash.org/${data.username}`,
-        });
-        const token = client.createToken(user.id);
-        await client.updateUsers([user]);
+        const userToken = client.createUserToken(data.username);
 
-        res.status(200).json({ user, token, apiKey });
+        res.status(200).json({ userToken });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: error.message });
