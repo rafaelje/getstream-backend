@@ -1,1 +1,1 @@
-export { token } from './token.action';
+export { token } from './channel.action';
