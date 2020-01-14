@@ -6,7 +6,7 @@
         "node": "12.11.1"
     },
     "scripts": {
-        "postinstall": "rm -rf dist && yarn run build",
+        "postinstall": "rm -rf dist && npm run build",
         "build": "babel src --out-dir dist",
         "start": "node dist/index.js",
         "dev": "nodemon --exec npx babel-node src/index.js",
