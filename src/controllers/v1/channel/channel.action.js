@@ -29,7 +29,7 @@ exports.channel = async (req, res) => {
 
         const userToken = client.createUserToken(data.username);
 
-        res.status(200).json({ userToken });
+        res.status(200).json({ apiKey, userToken });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: error.message });
