@@ -4,7 +4,7 @@ import { StreamChat } from 'stream-chat';
 
 dotenv.config();
 
-exports.token = async (req, res) => {
+exports.channel = async (req, res) => {
     try {
         const data = req.body;
 
@@ -22,14 +22,14 @@ exports.token = async (req, res) => {
 
         var stream = require('getstream');
         // Instantiate a new client (server side)
-        client = stream.connect(
+        let client = stream.connect(
             apiKey,
             apiSecret,
         );
 
-        //const userToken = client.createUserToken(data.username);
+        const userToken = client.createUserToken(data.username);
 
-        res.status(200).json({ data });
+        res.status(200).json({ userToken });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: error.message });

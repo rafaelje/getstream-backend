@@ -25,13 +25,13 @@ exports.token = async (req, res) => {
         const user = Object.assign({}, data, {
             id: md5(data.username),
             role: 'admin',
-            name: data.username,
+            name: data.username + 'holaaa',
             image: `https://robohash.org/${data.username}`,
         });
         const token = client.createToken(user.id);
         await client.updateUsers([user]);
 
-        res.status(200).json({ user, token, apiKey });
+        res.status(200).json({ user, token, apiKey, 'test': 'checking' });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: error.message });
