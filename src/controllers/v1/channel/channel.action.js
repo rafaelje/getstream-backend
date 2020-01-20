@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import md5 from 'md5';
 import { StreamChat } from 'stream-chat';
+import getstream from 'getstream';
 
 dotenv.config();
 
@@ -19,15 +20,15 @@ exports.channel = async (req, res) => {
             apiKey = process.env.STREAM_API_KEY;
             apiSecret = process.env.STREAM_API_SECRET;
         }
-
-        var stream = require('getstream');
+        
         // Instantiate a new client (server side)
-        let client = stream.connect(
+        let client = getstream.connect(
             apiKey,
             apiSecret,
         );
-
+        
         const userToken = client.createUserToken(data.username);
+        
 
         res.status(200).json({ apiKey, userToken });
     } catch (error) {
